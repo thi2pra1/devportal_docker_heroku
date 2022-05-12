@@ -1,10 +1,9 @@
 app:
   title: Scaffolded Backstage App
-  baseUrl: http://localhost:3000
+  baseUrl: https://devportal-backstage.herokuapp.com
 
 organization:
   name: My Company
-
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
   # See https://backstage.io/docs/tutorials/backend-to-backend-auth for
@@ -12,9 +11,10 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://localhost:7007
+  baseUrl: https://devportal-backstage.herokuapp.com
   listen:
-    port: 7007
+    port:
+      $env: PORT
   csp:
     connect-src: ["'self'", 'http:', 'https:']
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference

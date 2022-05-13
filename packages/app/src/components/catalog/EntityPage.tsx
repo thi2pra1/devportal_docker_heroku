@@ -71,30 +71,26 @@ import {
   EntityGithubPullRequestsContent, 
   EntityGithubPullRequestsOverviewCard 
 } from '@roadiehq/backstage-plugin-github-pull-requests';
+import {
+  EntityTravisCIContent,
+  EntityTravisCIOverviewCard,
+  isTravisciAvailable,
+} from '@roadiehq/backstage-plugin-travis-ci';
 
-const cicdContent = (
-  // This is an example of how you can implement your company's logic in entity page.
-  // You can for example enforce that all components of type 'service' should use GitHubActions
+export const cicdContent = (
   <EntitySwitch>
-    <EntitySwitch.Case if={isGithubActionsAvailable}>
-      <EntityGithubActionsContent />
+    <EntitySwitch.Case if={isTravisciAvailable}>
+      <EntityTravisCIContent />
     </EntitySwitch.Case>
+  </EntitySwitch>
+);
 
-    <EntitySwitch.Case>
-      <EmptyState
-        title="No CI/CD available for this entity"
-        missing="info"
-        description="You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below."
-        action={
-          <Button
-            variant="contained"
-            color="primary"
-            href="https://backstage.io/docs/features/software-catalog/well-known-annotations"
-          >
-            Read more
-          </Button>
-        }
-      />
+export const cicdCard = (
+  <EntitySwitch>
+    <EntitySwitch.Case if={isTravisciAvailable}>
+        <Grid item sm={6}>
+          <EntityTravisCIOverviewCard />
+        </Grid>
     </EntitySwitch.Case>
   </EntitySwitch>
 );
@@ -139,6 +135,8 @@ const overviewContent = (
     <Grid item md={6}>
         <EntityGithubPullRequestsOverviewCard />
     </Grid>
+
+    {cicdCard}
 
   </Grid>
 );

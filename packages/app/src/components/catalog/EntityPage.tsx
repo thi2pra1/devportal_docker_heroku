@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Button, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import {
   EntityApiDefinitionCard,
   EntityConsumedApisCard,
@@ -42,17 +42,12 @@ import {
   isOrphan,
 } from '@backstage/plugin-catalog';
 import {
-  isGithubActionsAvailable,
-  EntityGithubActionsContent,
-} from '@backstage/plugin-github-actions';
-import {
   EntityUserProfileCard,
   EntityGroupProfileCard,
   EntityMembersListCard,
   EntityOwnershipCard,
 } from '@backstage/plugin-org';
 import { EntityTechdocsContent } from '@backstage/plugin-techdocs';
-import { EmptyState } from '@backstage/core-components';
 import {
   Direction,
   EntityCatalogGraphCard,
